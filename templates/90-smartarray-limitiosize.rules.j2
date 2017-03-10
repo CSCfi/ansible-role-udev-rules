@@ -1,0 +1,17 @@
+# {{ ansible_managed }}
+# https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1668557
+#
+# HP/HPE Smart Array controllers can't handle IO:s much larger than 1 MiB with
+# good performance although they can handle 4 MiB without error. The driver
+# advertise the stripe size as maximum IO size which can be substantially
+# larger for bulk IO setups.
+#
+# Install this as
+# /etc/udev/rules.d/90-smartarray-limitiosize.rules
+# to limit max_sectors_kb to 512, the default before Linux 3.18.22.
+#
+# hpsa driver, Px1x and newer
+SUBSYSTEM=="block", ACTION=="add|change", DRIVERS=="hpsa", ATTR{queue/max_sectors_kb}="512"
+#
+# cciss driver, Px0x and older
+SUBSYSTEM=="block", ACTION=="add|change", DRIVERS=="cciss", ATTR{queue/max_sectors_kb}="512"

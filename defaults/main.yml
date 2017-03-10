@@ -1,0 +1,3 @@
+---
+# defaults file for ansible-role-udev-rules
+udev_smart_array_max_sectors: True

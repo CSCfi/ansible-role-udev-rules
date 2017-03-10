@@ -1,0 +1,11 @@
+---
+# tasks file for ansible-role-udev-rules
+
+ - name: template in 90-smartarray-limitiosize.rules.j2
+   template:
+     src: 90-smartarray-limitiosize.rules.j2
+     dest: /etc/udev/rules.d/90-smartarray-limitiosize.rules
+     backup: yes
+   when: udev_smart_array_max_sectors
+
+...
