@@ -11,7 +11,7 @@
 # to limit max_sectors_kb to 512, the default before Linux 3.18.22.
 #
 # hpsa driver, Px1x and newer
-SUBSYSTEM=="block", ACTION=="add|change", DRIVERS=="hpsa", ATTR{queue/max_sectors_kb}="512"
+ENV{DEVTYPE}=="disk", SUBSYSTEM=="block", ACTION=="add|change", DRIVERS=="hpsa", ATTR{queue/max_sectors_kb}="512"
 #
 # cciss driver, Px0x and older
-SUBSYSTEM=="block", ACTION=="add|change", DRIVERS=="cciss", ATTR{queue/max_sectors_kb}="512"
+ENV{DEVTYPE}=="disk", SUBSYSTEM=="block", ACTION=="add|change", DRIVERS=="cciss", ATTR{queue/max_sectors_kb}="512"
