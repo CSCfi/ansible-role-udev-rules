@@ -3,6 +3,12 @@ ansible-role-udev-rules
 
 Configure udev rules
 
+Currently this role can only template in a "smart array max_sectors_kb" override for block devices.
+
+Ideally it should not have any rules by default but users should be able to new ones by just defining some variables.
+
+https://github.com/CSC-IT-Center-for-Science/ansible-role-udev-rules/issues/3
+
 Requirements
 ------------
 
